@@ -10,7 +10,7 @@ PWM0 indicates that the pin is associated with pwmchip0, while CHAN0 indicates t
 
 # Constants
 - PIN_12_PATH:
-  Slight misnomer: this is a path to pwmchip0, rather than pin 12, however, it is a necessary component of the path to pin 22.
+  Slight misnomer: this is a path to pwmchip0, rather than pin 12, however, it is a necessary component of the path to pin 12.
   Equivalent to "/sys/class/pwm/pwmchip0"
 - PIN_12_CHANNEL_ID:
   The channel on pwmchip0 that corresponds to pin 12. 
