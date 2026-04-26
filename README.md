@@ -9,39 +9,39 @@ If the pin was reset properly, then the output should read: "12: a0    pd | lo /
 PWM0 indicates that the pin is associated with pwmchip0, while CHAN0 indicates that its channel id is 0
 
 # Constants
-- PIN_12_PATH
+- PIN_12_PATH:
   Slight misnomer: this is a path to pwmchip0, rather than pin 12, however, it is a necessary component of the path to pin 22.
   Equivalent to "/sys/class/pwm/pwmchip0"
-- PIN_12_CHANNEL_ID
+- PIN_12_CHANNEL_ID:
   The channel on pwmchip0 that corresponds to pin 12. 
   Equivalent to 0
 
 
 # Structs
 
-- typedef struct { char* pin_path; } device_obj;
+- typedef struct { char* pin_path; } device_obj :
   A struct that wraps a path to the pin that is sending the pwm signal
   If one wanted to pass 
 
 # Function API
 
-- bool set(device_obj* fs, char* info, char* value);
+- bool set(device_obj* fs, char* info, char* value):
   The function that writes to files/the pin itself.
   Should not need to be called by the user. Use the appropriate wrapper classes instead
 
-- bool set_unexport(device_obj* fs, int pin_channel);
+- bool set_unexport(device_obj* fs, int pin_channel):
   Removes a pin, preventing it from being written to
 
-- bool set_export(device_obj* fs, int pin_channel);
+- bool set_export(device_obj* fs, int pin_channel):
   Adds a pin, allowing it to be written to
 
-- bool set_enable(device_obj* fs, int pin_channel, bool flag);
+- bool set_enable(device_obj* fs, int pin_channel, bool flag):
   Physically enables a pin, allowing it to send a signal. When flag is set to true, a pin is enabled; when it is set to false, the pin is disabled
 
-- bool set_period(device_obj* fs, int pin_channel, int period);
+- bool set_period(device_obj* fs, int pin_channel, int period):
   Sets the pwm wave period. Period should be provided in nanoseconds
   
-- bool set_duty_cycle(device_obj* fs, int pin_channel, int duty_cycle);
+- bool set_duty_cycle(device_obj* fs, int pin_channel, int duty_cycle):
   Sets the duty cycle of PWM wave. Duty cycle should be provided in nanoseconds
 
  - int initialize_pwm(device_obj* device, int pin_channel, int period_in_ns);
