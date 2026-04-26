@@ -3,10 +3,10 @@ A script to trigger PWM signals on a raspberry pi compute module 5
 
 # Configuration:
 In a future update, configuration will be automated by selecting a pin. For now, however, it must be done manually.
-In /boot/firmware/config.txt, include this line to activate pin 12: dtoverlay=pwm,pin=12,func=4,clock=5000000
-Then, reboot the pi. PWM functionality should now be enabled for GPIO12 on the pi. This can be verified by running the command "sudo pinctrl get 12"
-If the pin was reset properly, then the output should read: "12: a0    pd | lo // GPIO12 = PWM0_CHAN0"
-PWM0 indicates that the pin is associated with pwmchip0, while CHAN0 indicates that its channel id is 0
+In /boot/firmware/config.txt, include this line to activate pin 12: dtoverlay=pwm,pin=12,func=4,clock=5000000.
+Then, reboot the pi. PWM functionality should now be enabled for GPIO12 on the pi. This can be verified by running the command "sudo pinctrl get 12".
+If the pin was reset properly, then the output should read: "12: a0    pd | lo // GPIO12 = PWM0_CHAN0".
+PWM0 indicates that the pin is associated with pwmchip0, while CHAN0 indicates that its channel id is 0.
 
 # Constants
 - PIN_12_PATH:
@@ -51,3 +51,5 @@ PWM0 indicates that the pin is associated with pwmchip0, while CHAN0 indicates t
   A wrapper function that terminates the pin, i.e. unexports and disables it. It should be called at the end of the program
 
 
+# Things to be aware of
+The code should be run with root permissions, i.e. with sudo. Some files may not have write permissions by default.  If running into trouble, try using the command "chmod" on "/sys/class/pwm/pwmchip[chip number]/pwm[channel id]/export" and "/sys/class/pwm/pwmchip[chip number]/pwm[channel id]/unexport"
