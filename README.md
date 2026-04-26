@@ -20,29 +20,29 @@ PWM0 indicates that the pin is associated with pwmchip0, while CHAN0 indicates t
 # Structs
 
 - typedef struct { char* pin_path; } device_obj :
-  A struct that wraps a path to the pin that is sending the pwm signal
-  If one wanted to pass 
+  A struct that wraps a path to the pin that is sending the pwm signal.
+  As an example, if one wanted to control pin 12, PIN_12_PATH should be passed in
 
 # Function API
 
 - bool set(device_obj* fs, char* info, char* value):
   The function that writes to files/the pin itself.
-  Should not need to be called by the user. Use the appropriate wrapper classes instead
+  Should not need to be called by the user. Use the appropriate wrapper classes instead.
 
 - bool set_unexport(device_obj* fs, int pin_channel):
-  Removes a pin, preventing it from being written to
+  Removes a pin, preventing it from being written to.
 
 - bool set_export(device_obj* fs, int pin_channel):
-  Adds a pin, allowing it to be written to
+  Adds a pin, allowing it to be written to.
 
 - bool set_enable(device_obj* fs, int pin_channel, bool flag):
-  Physically enables a pin, allowing it to send a signal. When flag is set to true, a pin is enabled; when it is set to false, the pin is disabled
+  Physically enables a pin, allowing it to send a signal. When flag is set to true, a pin is enabled; when it is set to false, the pin is disabled.
 
 - bool set_period(device_obj* fs, int pin_channel, int period):
-  Sets the pwm wave period. Period should be provided in nanoseconds
+  Sets the pwm wave period. Period should be provided in nanoseconds.
   
 - bool set_duty_cycle(device_obj* fs, int pin_channel, int duty_cycle):
-  Sets the duty cycle of PWM wave. Duty cycle should be provided in nanoseconds
+  Sets the duty cycle of PWM wave. Duty cycle should be provided in nanoseconds.
 
  - int initialize_pwm(device_obj* device, int pin_channel, int period_in_ns);
    A wrapper function that initializes the pin, i.e. exports and enables it. It should be called at the beginning of the program
