@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 
+/*This code progressively brightens an LED in duty cycle increments of 100000 nanoseconds*/
 int main(int argc, char** argv){
     int const clock = 5000000;
     int const period = 1000000;
