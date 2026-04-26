@@ -1,20 +1,3 @@
-//note: this c program should be executed via a bash file
-//the below commands need to be executed first, should be done with the same bash file
-// First you need to add the overlay into the config.txt (/boot/firmware/config.txt)
-
-// dtoverlay=pwm
-// After you need to set the pin12 to alternate function a0
-// Code: Select all
-
-// daniel@Pi4home:~ $ pinctrl 12
-// 12: ip    pd | lo // GPIO12 = input
-// daniel@Pi4home:~ $ pinctrl 12 a0
-// daniel@Pi4home:~ $ pinctrl 12
-// 12: a0    pd | lo // GPIO12 = PWM0_0
-
-// maybe set [pi5]
-//dtoverlay=pwm,pin=12,func=4
-// daniel@Pi4home:~ $ 
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
