@@ -11,7 +11,7 @@ int main(int argc, char** argv){
     device_obj *device = &dev_obj;
 
     initialize_pwm(device, PIN_12_CHANNEL_ID, period);
-
+    
 
     for (int i = 50000; i < period; i+=100000){
         set_duty_cycle(device, PIN_12_CHANNEL_ID, i);

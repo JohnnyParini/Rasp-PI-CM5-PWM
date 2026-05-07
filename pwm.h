@@ -26,7 +26,4 @@ int initialize_pwm(device_obj* device, int pin_channel, int period_in_ns);
 
 int terminate_pwm(device_obj* fs, int pin_channel);
 
-int autoconfig_dtoverlay(int clock_cycle, int pin_number);
-
-
 #endif
